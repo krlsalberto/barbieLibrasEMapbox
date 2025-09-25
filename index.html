@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Sistema de Previsão de Enchentes — Barbie Contrast Edition</title>
+<link rel="stylesheet" href="style.css">
+
+<!-- Fonte fofinha -->
+<link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+<!-- Mapbox GL JS -->
+<link href="https://api.tiles.mapbox.com/mapbox-gl-js/v2.11.0/mapbox-gl.css" rel="stylesheet">
+<script src="https://api.tiles.mapbox.com/mapbox-gl-js/v2.11.0/mapbox-gl.js"></script>
+
+<!-- VLibras -->
+<script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+</head>
+<body>
+<a href="#maincontent" class="skip-link">Pular para o conteúdo</a>
+
+<header role="banner" class="card header-card">
+<h1 id="site-title">💖 Sistema de Previsão de Enchentes 💖</h1>
+<p id="tagline">Versão Barbie Contrast — Fofo, Chique e Acessível</p>
+<div class="controls">
+<button id="btn-contrast" aria-pressed="false">Alternar Alto Contraste</button>
+<button id="btn-font" aria-pressed="false">Aumentar Fonte</button>
+<button id="btn-spacing" aria-pressed="false">Aumentar Espaçamento</button>
+<button id="btn-speak">Ler em voz alta (conteúdo)</button>
+</div>
+</header>
+
+<main id="maincontent" role="main">
+<section class="card" aria-labelledby="forecast-title">
+<h2 id="forecast-title">💧 Painel de Previsão</h2>
+<p>Insira dados de chuva estimada e nível do rio para ver o risco.</p>
+
+<form id="forecast-form" aria-describedby="form-desc">
+<div id="form-desc" class="sr-only">Formulário de previsão: insira chuva (mm/h), nível do rio (m) e capacidade de drenagem.</div>
+
+<label for="rain">Chuva estimada (mm/h)</label>
+<input id="rain" name="rain" type="number" min="0" step="0.1" value="10" required>
+
+<label for="river">Nível do rio (m)</label>
+<input id="river" name="river" type="number" min="0" step="0.01" value="2.5" required>
+
+<label for="drainage">Capacidade de drenagem (1-10)</label>
+<input id="drainage" name="drainage" type="range" min="1" max="10" value="5">
+
+<button type="submit" id="calc">Calcular Risco</button>
+</form>
+</section>
+
+<div class="grid">
+<section class="card" aria-labelledby="map-title">
+<h2 id="map-title">🗺️ Mapa</h2>
+<div id="map" class="map"></div>
+
+<h3>📢 Alertas</h3>
+<ul id="alerts" class="alerts" aria-live="polite" aria-atomic="true">
+<li>Nenhum alerta no momento.</li>
+</ul>
+</section>
+
+<aside class="card" aria-labelledby="tools-title">
+<h2 id="tools-title">Por que este sistema é importante?</h2>
+<ul>
+<li>🌊 Alerta a população sobre riscos iminentes de enchentes.</li>
+<li>🚒 Auxilia equipes de emergência a se prepararem com antecedência.</li>
+<li>🏠 Contribui para reduzir danos materiais e prevenir acidentes.</li>
+<li>🏙️ Ajuda no planejamento urbano e gestão da água.</li>
+</ul>
+</aside>
+</div>
+</main>
+
+<footer role="contentinfo">
+<small>Versão Barbie 🌸 com VLibras e Mapbox integrado.</small>
+</footer>
+
+<!-- VLibras Widget fixo -->
+<div vw class="enabled">
+  <div vw-access-button class="active"></div>
+  <div vw-plugin-wrapper></div>
+</div>
+<script>
+  new window.VLibras.Widget('https://vlibras.gov.br/app');
+</script>
+
+<script src="script.js"></script>
+</body>
+</html>
